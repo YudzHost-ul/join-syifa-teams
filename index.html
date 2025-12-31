@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SYIFA TEAM - Landing Pages</title>
+
+<style>
+:root{
+  --primary-glow:#60a5fa;
+  --wa-gradient:linear-gradient(145deg, #25D366, #128C7E, #075E54);
+  --wa-shadow:rgba(37, 211, 102, 0.7);
+  --tiktok-gradient:linear-gradient(145deg, #00F5FF, #25F4EE, #000000);
+  --tiktok-shadow:rgba(0, 245, 255, 0.7);
+  --ig-gradient:linear-gradient(145deg, #F58529, #FEDA77, #DD2A7B, #8134AF, #515BD4);
+  --ig-shadow:rgba(221, 42, 123, 0.7);
+  --roblox-red:#FF5C5C;
+  --roblox-blue:#00A2FF;
+  --roblox-yellow:#FFD635;
+  --bg:radial-gradient(circle at top, #020617, #000814);
+  --card-gradient:linear-gradient(145deg, rgba(30, 64, 175, 0.2), rgba(29, 78, 216, 0.1));
+  --logo-bg:linear-gradient(145deg, rgba(29, 78, 216, 0.6), rgba(30, 64, 175, 0.4));
+  --ultra-smooth:cubic-bezier(0.4, 0, 0.2, 1); 
+  --super-slow:cubic-bezier(0.19, 1, 0.22, 1); 
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* BACKGROUND DENGAN GARIS-GARIS */
+body{
+  background:var(--bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow:hidden;
+  opacity:0;
+  animation:pageFadeIn 1.8s var(--super-slow) forwards;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  position:relative;
+}
+
+/* EFEK GARIS-GARIS DI BACKGROUND */
+body::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background-image: 
+    linear-gradient(to right, rgba(96, 165, 250, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index:-2;
+  animation:gridMove 20s var(--super-slow) infinite alternate;
+}
+
+body::after{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:radial-gradient(circle at center, rgba(29, 78, 216, 0.15) 0%, transparent 70%);
+  z-index:-1;
+}
+
+@keyframes gridMove{
+  0%{transform:translate(0, 0) scale(1);}
+  100%{transform:translate(-20px, -20px) scale(1.1);}
+}
+
+/* ANIMASI MASUK HALAMAN LEBIH MULUS */
+@keyframes pageFadeIn{
+  0%{opacity:0; transform:scale(0.97) translateY(10px);}
+  100%{opacity:1; transform:scale(1) translateY(0);}
+}
+
+/* BACKGROUND ELEMEN GERAK LEBIH HALUS */
+.bg-particle{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle, var(--primary-glow), transparent);
+  opacity:0;
+  animation:float 15s var(--super-slow) infinite alternate;
+  will-change: opacity, transform;
+}
+
+.roblox-block{
+  position:absolute;
+  width:clamp(20px,5vw,35px);
+  height:clamp(20px,5vw,35px);
+  background:var(--roblox-red);
+  opacity:0;
+  animation:blockFloat 18s var(--super-slow) infinite alternate;
+  will-change: opacity, transform;
+}
+
+.roblox-block::before, .roblox-block::after{display:none;}
+.roblox-block.blue{background:var(--roblox-blue);}
+.roblox-block.yellow{background:var(--roblox-yellow);}
+
+/* POSISI ELEMEN BACKGROUND */
+.bg-particle:nth-child(1){width:100px; height:100px; top:10%; left:15%; animation-delay:0.3s; animation-fill-mode:forwards;}
+.bg-particle:nth-child(2){width:70px; height:70px; top:70%; right:10%; animation-delay:0.8s; animation-fill-mode:forwards;}
+.roblox-block:nth-child(3){top:15%; right:15%; animation-delay:1.2s; animation-fill-mode:forwards;}
+.roblox-block.yellow:nth-child(4){top:60%; right:20%; animation-delay:1.8s; animation-fill-mode:forwards;}
+
+@keyframes float{
+  0%{opacity:.15; transform:translateY(0) scale(1) translateX(0);}
+  50%{opacity:.25; transform:translateY(-30px) scale(1.08) translateX(10px);}
+  100%{opacity:.15; transform:translateY(0) scale(1) translateX(-10px);}
+}
+
+@keyframes blockFloat{
+  0%{opacity:.2; transform:translateY(0) rotate(10deg) scale(1);}
+  50%{opacity:.3; transform:translateY(-25px) rotate(20deg) scale(1.05);}
+  100%{opacity:.2; transform:translateY(0) rotate(10deg) scale(1);}
+}
+
+/* MAIN CONTAINER ANIMASI LEBIH MENGALIR */
+.container{
+  width: 100%;
+  max-width: 350px;
+  background:var(--card-gradient);
+  border:1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow:0 0 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+  text-align: center;
+  backdrop-filter:blur(10px);
+  position:relative;
+  opacity:0;
+  transform:scale(0.93) translateY(25px);
+  animation:containerSlideIn 2s var(--super-slow) forwards;
+  animation-delay:0.5s;
+  will-change: opacity, transform;
+}
+
+@keyframes containerSlideIn{
+  0%{opacity:0; transform:scale(0.93) translateY(25px);}
+  100%{opacity:1; transform:scale(1) translateY(0);}
+}
+
+/* ELEMEN CORNER BLOCK GERAK LEBIH LEMBUT */
+.container::before, .container::after{
+  content:"";
+  position:absolute;
+  width:25px; height:25px;
+  border-radius:4px;
+  opacity:0;
+  animation:cornerBlockFade 1.5s var(--ultra-smooth) forwards;
+}
+
+.container::before{top:15px; left:15px; background:var(--roblox-red); animation-delay:2s;}
+.container::after{bottom:15px; right:15px; background:var(--roblox-blue); animation-delay:2.3s;}
+
+@keyframes cornerBlockFade{
+  0%{opacity:0; transform:scale(0.7) rotate(-5deg);}
+  50%{transform:scale(1.1) rotate(5deg);}
+  100%{opacity:.4; transform:scale(1) rotate(0);}
+}
+
+/* GLOW EFFECT PULSE LEBIH SMOOTH */
+.glow{
+  position:absolute;
+  inset:-50%;
+  background:radial-gradient(circle, var(--primary-glow), transparent 65%);
+  filter:blur(60px);
+  z-index:-1;
+  animation:pulse 8s var(--super-slow) infinite alternate;
+  opacity:0;
+  animation-delay:1.2s;
+  animation-fill-mode:forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes pulse{
+  0%{opacity:.25; transform:scale(1);}
+  100%{opacity:.55; transform:scale(1.08);}
+}
+
+/* LOGO SECTION ANIMASI LEBIH HALUS */
+.logo-section{
+  width: 100%;
+  padding: 12px 0;
+  background:var(--logo-bg);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border:1px solid rgba(96, 165, 250, 0.3);
+  box-shadow:0 0 15px rgba(96, 165, 250, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  z-index:1;
+  opacity:0;
+  animation:logoSectionFade 1.8s var(--ultra-smooth) forwards;
+  animation-delay:1.5s;
+  will-change: opacity, transform;
+}
+
+.roblox-icon{
+  position:absolute;
+  top:-8px; right:20px;
+  width:20px; height:20px;
+  background:var(--roblox-yellow);
+  border-radius:3px;
+  box-shadow:0 0 8px var(--roblox-yellow);
+  z-index:2;
+  opacity:0;
+  animation:robloxIconPop 1.5s var(--ultra-smooth) forwards;
+  animation-delay:2s;
+  will-change: opacity, transform;
+}
+
+@keyframes logoSectionFade{
+  0%{opacity:0; transform:scale(0.9) translateY(10px);}
+  100%{opacity:1; transform:scale(1) translateY(0);}
+}
+
+@keyframes robloxIconPop{
+  0%{opacity:0; transform:rotate(15deg) scale(0.7) translateX(5px);}
+  50%{transform:rotate(20deg) scale(1.1) translateX(0);}
+  100%{opacity:1; transform:rotate(15deg) scale(1) translateX(0);}
+}
+
+.logo{
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 0 12px var(--primary-glow);
+  opacity:0;
+  animation:logoZoom 2s var(--ultra-smooth) forwards;
+  animation-delay:1.8s;
+  will-change: opacity, transform;
+}
+
+@keyframes logoZoom{
+  0%{opacity:0; transform:scale(0.85) rotate(-3deg);}
+  50%{transform:scale(1.05) rotate(1deg);}
+  100%{opacity:1; transform:scale(1) rotate(0);}
+}
+
+/* TITLE ANIMASI LEBIH MULUS */
+.title{
+  color: white;
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing:1.5px;
+  text-shadow:0 0 15px var(--primary-glow);
+  position:relative;
+  z-index:1;
+  opacity:0;
+  animation:titleFadeUp 1.5s var(--ultra-smooth) forwards;
+  animation-delay:2.2s;
+  will-change: opacity, transform;
+}
+
+.title::after{
+  content:"";
+  position:absolute;
+  bottom:-8px; left:50%;
+  transform:translateX(-50%) scaleX(0);
+  width:60px; height:3px;
+  background:linear-gradient(90deg, transparent, var(--primary-glow), transparent);
+  border-radius:3px;
+  animation:titleLineExpand 1.8s var(--super-slow) forwards;
+  animation-delay:2.8s;
+  will-change: transform, opacity;
+}
+
+@keyframes titleFadeUp{
+  0%{opacity:0; transform:translateY(15px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+@keyframes titleLineExpand{
+  0%{transform:translateX(-50%) scaleX(0) scaleY(0.8); opacity:0;}
+  100%{transform:translateX(-50%) scaleX(1) scaleY(1); opacity:1;}
+}
+
+/* BUTTONS ANIMASI HOVER SUPER SMOOTH */
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+  position:relative;
+  z-index:1;
+}
+
+.btn{
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.8s var(--ultra-smooth); 
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  opacity:0;
+  transform:translateY(15px);
+  will-change: transform, box-shadow, border-color;
+}
+
+.btn img{
+  width: 24px;
+  height: 24px;
+  transition:all 0.6s var(--ultra-smooth);
+  opacity:0;
+  will-change: transform, opacity;
+}
+
+/* PLATFORM GRADIENTS */
+.btn-wa-group{
+  background:var(--wa-gradient);
+  box-shadow:0 8px 0 rgba(7, 94, 84, 0.8), 0 0 15px var(--wa-shadow);
+  animation:btnFadeIn 1.8s var(--ultra-smooth) forwards;
+  animation-delay:2.5s;
+}
+
+.btn-wa-channel{
+  background:var(--wa-gradient);
+  box-shadow:0 8px 0 rgba(7, 94, 84, 0.8), 0 0 15px var(--wa-shadow);
+  animation:btnFadeIn 1.8s var(--ultra-smooth) forwards;
+  animation-delay:2.8s;
+}
+
+.btn-tiktok{
+  background:var(--tiktok-gradient);
+  box-shadow:0 8px 0 rgba(0, 0, 0, 0.8), 0 0 15px var(--tiktok-shadow);
+  animation:btnFadeIn 1.8s var(--ultra-smooth) forwards;
+  animation-delay:3.1s;
+}
+
+.btn-instagram{
+  background:var(--ig-gradient);
+  box-shadow:0 8px 0 rgba(129, 52, 175, 0
+.8), 0 0 15px var(--ig-shadow);
+  animation:btnFadeIn 1.8s var(--ultra-smooth) forwards;
+  animation-delay:3.4s;
+}
+
+@keyframes btnFadeIn{
+  0%{opacity:0; transform:translateY(15px) scale(0.97);}
+  50%{transform:translateY(-3px) scale(1.02);}
+  100%{opacity:1; transform:translateY(0) scale(1);}
+}
+
+/* ANIMASI IKON DIDALAM TOMBOL */
+.btn-wa-group img{animation:iconPopIn 1.2s var(--ultra-smooth) forwards; animation-delay:3s;}
+.btn-wa-channel img{animation:iconPopIn 1.2s var(--ultra-smooth) forwards; animation-delay:3.3s;}
+.btn-tiktok img{animation:iconPopIn 1.2s var(--ultra-smooth) forwards; animation-delay:3.6s;}
+.btn-instagram img{animation:iconPopIn 1.2s var(--ultra-smooth) forwards; animation-delay:3.9s;}
+
+@keyframes iconPopIn{
+   0%{opacity:0; transform:scale(0.85) rotate(-5deg);}
+  50%{transform:scale(1.05) rotate(3deg);}
+  100%{opacity:1; transform:scale(1) rotate(0);}
+}
+
+/* SHINE EFFECT LEBIH LEMBUT DAN ALIRAN */
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  transition:all 1.2s var(--super-slow);
+}
+
+.btn:hover::before{left:100%;}
+.btn:hover{
+  transform: translateY(-6px) scale(1.03); 
+  box-shadow:0 12px 0 rgba(0,0,0,0.6), 0 0 35px var(--primary-glow);
+  border-color: rgba(255,255,255,0.3);
+}
+.btn:hover img{transform:scale(1.15) rotate(5deg);}
+.btn:active{
+  transform: translateY(2px) scale(0.99); 
+  transition:all 0.2s var(--ultra-smooth);
+}
+
+/* COPYRIGHT SECTION ANIMASI LEBIH MULUS */
+.copyright{
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  line-height: 1.5;
+  padding-top: 12px;
+  border-top: 1px solid rgba(96, 165, 250, 0.2);
+  position:relative;
+  z-index:1;
+  opacity:0;
+  transform:translateY(12px);
+  animation:copyrightFadeIn 1.8s var(--ultra-smooth) forwards;
+  animation-delay:3.8s;
+  will-change: opacity, transform;
+}
+
+.copyright p{
+  margin: 2px 0;
+  opacity:0;
+  animation:textLineFade 1.2s var(--ultra-smooth) forwards;
+  transform:translateY(5px);
+}
+
+.copyright p:nth-child(1){animation-delay:4.3s;}
+.copyright p:nth-child(2){animation-delay:4.6s;}
+.copyright p:nth-child(3){animation-delay:4.9s;}
+
+@keyframes copyrightFadeIn{
+  0%{opacity:0; transform:translateY(12px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+@keyframes textLineFade{
+  0%{opacity:0; transform:translateY(5px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* OPTIMALISASI PERFORMA UNTUK KECEPATAN & KELANCARAN */
+* {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img{
+  image-rendering: optimizeQuality;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* TAMBAHAN EFEK MICRO-INTERACTION DI BACKGROUND */
+.bg-particle::before{
+  content:"";
+  position:absolute;
+  width:100%; height:100%;
+  border-radius:50%;
+  background:radial-gradient(circle, transparent, rgba(255,255,255,0.1));
+  animation:particleGlow 6s var(--super-slow) infinite alternate;
+}
+
+@keyframes particleGlow{
+  0%{opacity:0; transform:scale(0.8);}
+  100%{opacity:0.3; transform:scale(1.2);}
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND ELEMENTS -->
+<div class="bg-particle"></div>
+<div class="bg-particle"></div>
+<div class="roblox-block"></div>
+<div class="roblox-block yellow"></div>
+
+<div class="container">
+  <div class="glow"></div>
+  
+  <!-- BAGIAN LOGO -->
+  <div class="logo-section">
+    <div class="roblox-icon"></div>
+    <img src="https://files.catbox.moe/4vvvb4.jpg" class="logo" alt="Logo SYIFA TEAM" loading="lazy">
+  </div>
+  
+  <div class="title">MENU UTAMA</div>
+  
+  <div class="buttons">
+    <!-- TOMBOL 1 -->
+    <button class="btn btn-wa-group" onclick="window.location.href='https://chat.whatsapp.com/Ie3IcMdio4gAnr7Wj4i1B1'">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WA" loading="lazy">
+      GRUP WHATSAPP
+    </button>
+    
+    <!-- TOMBOL 2 -->
+    <button class="btn btn-wa-channel" onclick="window.location.href='https://whatsapp.com/channel/0029VbB2R397oQhhDq6f6J2c'">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WA Channel" loading="lazy">
+      SALURAN WHATSAPP
+    </button>
+    
+    <!-- TOMBOL 3 - TIKTOK -->
+    <button class="btn btn-tiktok" onclick="window.location.href='https://tiktok.com/@syifateam.ofc'">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" loading="lazy">
+      TIKTOK
+    </button>
+    
+    <!-- TOMBOL 4 - INSTAGRAM -->
+    <button class="btn btn-instagram" onclick="window.location.href='https://www.instagram.com/syifateams/'">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" loading="lazy">
+      INSTAGRAM
+    </button>
+  </div>
+  
+  <!-- BAGIAN HAK CIPTA -->
+  <div class="copyright">
+    <p>© 2025 SYIFA TEAM</p>
+    <p>Team Roblox</p>
+    <p>Semua Hak Cipta Dilindungi</p>
+  </div>
+</div>
+
+<!-- SCRIPT OPTIMALISASI PERFORMA -->
+<script>
+// HENTIKAN ANIMASI JIKA TAB TIDAK AKTIF
+document.addEventListener("visibilitychange", () => {
+  const elements = document.querySelectorAll('*[class*="float"], *[class*="pulse"], *[class*="Glow"], *[class*="gridMove"]');
+  if (document.hidden) {
+    elements.forEach(el => el.style.animationPlayState = "paused");
+  } else {
+    elements.forEach(el => el.style.animationPlayState = "running");
+  }
+});
+
+// OPTIMALISASI LOADING & MUNCULKAN EFEK TRANSISI YANG SMOOTH
+window.addEventListener("DOMContentLoaded", () => {
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 100);
+});
+
+// TAMBAHAN EFEK SCROLL JIKA ADA KONTEN LEBIH BANYAK
+document.body.style.scrollBehavior = "smooth";
+</script>
+
+</body>
+</html>
